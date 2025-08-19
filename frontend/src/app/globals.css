@@ -1,0 +1,427 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Updated to use gray color scheme instead of green */
+  --background: #0a0a0a;
+  --foreground: #f5f5f5;
+  --card: #1a1a1a;
+  --card-foreground: #f5f5f5;
+  --popover: #1a1a1a;
+  --popover-foreground: #f5f5f5;
+  --primary: #6b7280;
+  --primary-foreground: #ffffff;
+  --secondary: #262626;
+  --secondary-foreground: #f5f5f5;
+  --muted: #404040;
+  --muted-foreground: #a3a3a3;
+  --accent: #9ca3af;
+  --accent-foreground: #0a0a0a;
+  --destructive: #ef4444;
+  --destructive-foreground: #f5f5f5;
+  --border: #404040;
+  --input: #262626;
+  --ring: #9ca3af;
+  --chart-1: #6b7280;
+  --chart-2: #9ca3af;
+  --chart-3: #d1d5db;
+  --chart-4: #e5e7eb;
+  --chart-5: #f3f4f6;
+  --radius: 0.5rem;
+  --sidebar: #1a1a1a;
+  --sidebar-foreground: #f5f5f5;
+  --sidebar-primary: #6b7280;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #9ca3af;
+  --sidebar-accent-foreground: #0a0a0a;
+  --sidebar-border: #404040;
+  --sidebar-ring: #9ca3af;
+  /* Updated font variables to use Inter instead of Playfair Display */
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-source-sans);
+}
+
+.dark {
+  /* Updated light mode colors to use gray instead of green */
+  --background: #ffffff;
+  --foreground: #374151;
+  --card: #f9fafb;
+  --card-foreground: #374151;
+  --popover: #ffffff;
+  --popover-foreground: #374151;
+  --primary: #4b5563;
+  --primary-foreground: #ffffff;
+  --secondary: #f9fafb;
+  --secondary-foreground: #374151;
+  --muted: #f3f4f6;
+  --muted-foreground: #6b7280;
+  --accent: #9ca3af;
+  --accent-foreground: #ffffff;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --border: #e5e7eb;
+  --input: #f9fafb;
+  --ring: #9ca3af;
+  --chart-1: #4b5563;
+  --chart-2: #6b7280;
+  --chart-3: #9ca3af;
+  --chart-4: #d1d5db;
+  --chart-5: #e5e7eb;
+  --sidebar: #f9fafb;
+  --sidebar-foreground: #374151;
+  --sidebar-primary: #4b5563;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #6b7280;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #e5e7eb;
+  --sidebar-ring: #9ca3af;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    /* Added animated background pattern */
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  /* Added animated background grid pattern */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(
+        rgba(107, 114, 128, 0.1) 1px,
+        transparent 1px
+      ),
+      linear-gradient(90deg, rgba(107, 114, 128, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: grid-move 20s linear infinite;
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  /* Added floating particles animation */
+  body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(
+        circle at 20% 80%,
+        rgba(156, 163, 175, 0.1) 2px,
+        transparent 2px
+      ),
+      radial-gradient(
+        circle at 80% 20%,
+        rgba(156, 163, 175, 0.1) 2px,
+        transparent 2px
+      ),
+      radial-gradient(
+        circle at 40% 40%,
+        rgba(156, 163, 175, 0.05) 1px,
+        transparent 1px
+      );
+    background-size: 200px 200px, 300px 300px, 150px 150px;
+    animation: particles-float 30s ease-in-out infinite;
+    z-index: -1;
+    pointer-events: none;
+  }
+}
+
+/* Added keyframe animations for background effects */
+@keyframes grid-move {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(50px, 50px);
+  }
+}
+
+@keyframes particles-float {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  33% {
+    transform: translate(30px, -30px) rotate(120deg);
+  }
+  66% {
+    transform: translate(-20px, 20px) rotate(240deg);
+  }
+}
+
+/* Added custom animation for slow bounce effect */
+@keyframes bounce-slow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 3s ease-in-out infinite;
+}
+
+/* Rubik's Cube Styles */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.rubiks-cube-container {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  margin: 0 auto;
+  transform-style: preserve-3d;
+  animation: rubiks-solve 8s ease-in-out infinite;
+}
+
+.rubiks-face {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 4px;
+  padding: 8px;
+  background: #1a1a1a;
+  border: 3px solid #333;
+  border-radius: 12px;
+}
+
+.rubiks-square {
+  border-radius: 6px;
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+/* Updated all Rubik's cube squares to be black only */
+.rubiks-front .rubiks-square {
+  background: #000000;
+}
+
+.rubiks-back .rubiks-square {
+  background: #000000;
+}
+
+.rubiks-right .rubiks-square {
+  background: #000000;
+}
+
+.rubiks-left .rubiks-square {
+  background: #000000;
+}
+
+.rubiks-top .rubiks-square {
+  background: #000000;
+}
+
+.rubiks-bottom .rubiks-square {
+  background: #000000;
+}
+
+.rubiks-front {
+  transform: rotateY(0deg) translateZ(150px);
+}
+
+.rubiks-back {
+  transform: rotateY(180deg) translateZ(150px);
+}
+
+.rubiks-right {
+  transform: rotateY(90deg) translateZ(150px);
+}
+
+.rubiks-left {
+  transform: rotateY(-90deg) translateZ(150px);
+}
+
+.rubiks-top {
+  transform: rotateX(90deg) translateZ(150px);
+}
+
+.rubiks-bottom {
+  transform: rotateX(-90deg) translateZ(150px);
+}
+
+/* Rubik's cube solving animation with face rotations */
+@keyframes rubiks-solve {
+  0% {
+    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+  }
+  12.5% {
+    transform: rotateX(0deg) rotateY(90deg) rotateZ(0deg);
+  }
+  25% {
+    transform: rotateX(90deg) rotateY(90deg) rotateZ(0deg);
+  }
+  37.5% {
+    transform: rotateX(90deg) rotateY(180deg) rotateZ(0deg);
+  }
+  50% {
+    transform: rotateX(180deg) rotateY(180deg) rotateZ(90deg);
+  }
+  62.5% {
+    transform: rotateX(180deg) rotateY(270deg) rotateZ(90deg);
+  }
+  75% {
+    transform: rotateX(270deg) rotateY(270deg) rotateZ(180deg);
+  }
+  87.5% {
+    transform: rotateX(270deg) rotateY(360deg) rotateZ(180deg);
+  }
+  100% {
+    transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+  }
+}
+
+.animate-rubiks-solve {
+  animation: rubiks-solve 8s ease-in-out infinite;
+}
+
+/* Floating elements animations remain the same */
+@keyframes float-1 {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+  }
+}
+
+@keyframes float-2 {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(-180deg);
+  }
+}
+
+@keyframes float-3 {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-25px) rotate(90deg);
+  }
+}
+
+.animate-float-1 {
+  animation: float-1 4s ease-in-out infinite;
+}
+
+.animate-float-2 {
+  animation: float-2 5s ease-in-out infinite 0.5s;
+}
+
+.animate-float-3 {
+  animation: float-3 3.5s ease-in-out infinite 1s;
+}
+
+/* Gradient text animation */
+@keyframes gradient-x {
+  0%,
+  100% {
+    background-size: 200% 200%;
+    background-position: left center;
+  }
+  50% {
+    background-size: 200% 200%;
+    background-position: right center;
+  }
+}
+
+.animate-gradient-x {
+  animation: gradient-x 3s ease infinite;
+}
+
+/* Added slide-in animation for client cards */
+@keyframes slideInUp {
+  0% {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-in-up {
+  animation: slideInUp 0.8s ease-out both;
+}
+
+/* Added pulse animation for status badges */
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 5px rgba(34, 197, 94, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.6);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
