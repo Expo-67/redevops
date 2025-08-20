@@ -3,40 +3,20 @@ import { Star } from "lucide-react";
 
 const testimonials = [
   {
-    name: "Sarah Johnson",
+    name: "Daoglus Nyangeri.",
     company: "Stramco",
-    role: "HR Director",
+    role: " Director",
     content:
       "Redevops transformed our HR operations with their innovative platform. The automated systems and intuitive interface have streamlined our processes significantly.",
     rating: 5,
-    avatar: "/placeholder.svg?height=60&width=60",
   },
   {
-    name: "Michael Raponi",
+    name: "Gideon Sekento ",
     company: "Raponi Gardens",
     role: "Founder",
     content:
-      "The web application Redevops built for us has revolutionized how we showcase our landscaping projects. Our client engagement has increased dramatically.",
+      "Redevops built  us a website  and revolutionized how we showcase our landscaping projects. Our client engagement has increased .",
     rating: 5,
-    avatar: "/placeholder.svg?height=60&width=60",
-  },
-  {
-    name: "Priya Sharma",
-    company: "Asyana",
-    role: "Operations Manager",
-    content:
-      "Their hotel booking platform exceeded our expectations. The guest management features are intuitive and have improved our operational efficiency tremendously.",
-    rating: 5,
-    avatar: "/placeholder.svg?height=60&width=60",
-  },
-  {
-    name: "David Chen",
-    company: "Service-Moti",
-    role: "CEO",
-    content:
-      "Redevops delivered a comprehensive garage management solution that has transformed our business. The automated reminders and tracking features are game-changers.",
-    rating: 5,
-    avatar: "/placeholder.svg?height=60&width=60",
   },
 ];
 
@@ -70,11 +50,6 @@ export function TestimonialsSection() {
                   "{testimonial.content}"
                 </blockquote>
                 <div className="flex items-center gap-4">
-                  <img
-                    src={testimonial.avatar || "/placeholder.svg"}
-                    alt={testimonial.name}
-                    className="w-12 h-12 rounded-full object-cover"
-                  />
                   <div>
                     <div className="font-sans font-bold text-foreground">
                       {testimonial.name}

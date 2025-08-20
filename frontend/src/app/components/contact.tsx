@@ -130,7 +130,9 @@ export function ContactSection() {
                       size="icon"
                       className="w-12 h-12 bg-transparent"
                       onClick={() =>
-                        window.open("https://instagram.com/redevops", "_blank")
+                        window.open(
+                          "https://www.instagram.com/james_expo4?igsh=MWI2aGExNms3cjgxdg=="
+                        )
                       }
                     >
                       <Instagram className="w-5 h-5" />

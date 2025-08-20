@@ -4,13 +4,28 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Clock, CheckCircle } from "lucide-react";
 import { useEffect, useState } from "react";
+import Image, { StaticImageData } from "next/image";
 
-const clients = [
+import stramco from "../assets/stramco.png";
+import raponi from "../assets/raponi.jpg";
+import asyana from "../assets/asyana.png";
+import service from "../assets/service.png";
+
+type Client = {
+  name: string;
+  logo: string | StaticImageData;
+  description: string;
+  services: string[];
+  status: "Live" | "In Progress";
+  liveUrl?: string | null;
+};
+
+const clients: Client[] = [
   {
     name: "Stramco",
-    logo: "/placeholder.svg?height=80&width=200",
+    logo: stramco,
     description:
-      "Comprehensive HR solutions including outsourcing, consultancy, audit services, recruitment, and selection processes.",
+      "A full stack web app for Comprehensive HR solutions including outsourcing, consultancy, audit services, recruitment, and selection processes.",
     services: [
       "HR Outsourcing",
       "HR Consultancy",
@@ -18,13 +33,13 @@ const clients = [
       "Recruitment & Selection",
     ],
     status: "Live",
-    liveUrl: "https://stramco.com",
+    liveUrl: "https://stramcosolutions.com/",
   },
   {
     name: "Raponi Gardens",
-    logo: "/placeholder.svg?height=80&width=200",
+    logo: raponi,
     description:
-      "Professional landscaping services dedicated to transforming outdoor spaces into natural paradise environments.",
+      "A website on professional landscaping services dedicated to transforming outdoor spaces into natural paradise environments.",
     services: [
       "Landscape Design",
       "Garden Transformation",
@@ -32,13 +47,14 @@ const clients = [
       "Natural Paradise Creation",
     ],
     status: "Live",
-    liveUrl: "https://raponigardens.com",
+    liveUrl:
+      "https://raponiv2-guide.vercel.app/?fbclid=PAQ0xDSwLtdDdleHRuA2FlbQIxMAABpxoqVR7Uw-YtPu9qrw0Ea8Y72Jnv7g5g85O-zXvKllr7EXx66ApXoUeeV5ip_aem_ZzDuFolWtS2nO-zJt9_ODw",
   },
   {
     name: "Asyana",
-    logo: "/placeholder.svg?height=80&width=200",
+    logo: asyana,
     description:
-      "Advanced hotel booking platform designed to streamline guest management and enhance hospitality operations.",
+      "A full-stack web app for advanced hotel booking platform designed to streamline guest management and enhance hospitality operations.",
     services: [
       "Hotel Booking System",
       "Guest Management",
@@ -50,9 +66,9 @@ const clients = [
   },
   {
     name: "Service-Moti",
-    logo: "/placeholder.svg?height=80&width=200",
+    logo: service,
     description:
-      "Revolutionary garage operations platform featuring digital service records, automated reminders, and comprehensive tracking.",
+      "A full-stack app for garage operations platform featuring digital service records, automated reminders, and comprehensive trackingusing AI.",
     services: [
       "Digital Service Records",
       "Automated Reminders",
@@ -60,7 +76,7 @@ const clients = [
       "Garage Management",
     ],
     status: "Live",
-    liveUrl: "https://servicemoti.com",
+    liveUrl: "https://servicemoti.com/",
   },
 ];
 
@@ -131,9 +147,11 @@ export function ClientsSection() {
                 <div className="flex items-center justify-between mb-8">
                   <div className="flex items-center gap-4">
                     <div className="p-3 rounded-xl bg-secondary/50 group-hover:bg-primary/20 transition-colors duration-300">
-                      <img
-                        src={client.logo || "/placeholder.svg"}
+                      <Image
+                        src={client.logo}
                         alt={`${client.name} logo`}
+                        width={100}
+                        height={40}
                         className="h-8 w-auto object-contain group-hover:scale-110 transition-transform duration-300"
                       />
                     </div>
@@ -162,7 +180,7 @@ export function ClientsSection() {
                         variant="outline"
                         size="sm"
                         className="font-mono bg-transparent border-2 hover:border-accent hover:text-accent hover:scale-110 hover:shadow-lg transition-all duration-300"
-                        onClick={() => window.open(client.liveUrl, "_blank")}
+                        onClick={() => window.open(client.liveUrl!, "_blank")}
                       >
                         View Live
                         <ExternalLink className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
