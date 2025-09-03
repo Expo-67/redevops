@@ -88,7 +88,7 @@ export function ContactSection() {
                       Email
                     </div>
                     <div className="font-mono text-muted-foreground">
-                      hello@redevops.com
+                      jamiendungu38@gmail.com
                     </div>
                   </div>
                 </div>
